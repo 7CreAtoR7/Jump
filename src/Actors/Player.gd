@@ -1,6 +1,5 @@
 extends Actor
 
-
 func _physics_process(delta):
 	var is_jump_interrupted: = Input.is_action_just_released("jump") and _velocity.y < 0.0
 	var direction: = get_direction()
@@ -8,7 +7,6 @@ func _physics_process(delta):
 	_velocity = move_and_slide(_velocity, FLOOR_NORMAL)
 	if direction.x != 0:
 		$player.rotation += direction.x * 10.2 * delta
-	# commentariy
 
 func get_direction() -> Vector2:
 	return Vector2(
