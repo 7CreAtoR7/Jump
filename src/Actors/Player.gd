@@ -6,6 +6,8 @@ func _physics_process(delta):
 	var direction: = get_direction()
 	_velocity = calculate_move_velocity(_velocity, direction, speed, is_jump_interrupted)
 	_velocity = move_and_slide(_velocity, FLOOR_NORMAL)
+	if direction.x != 0:
+		$player.rotation += direction.x * 10.2 * delta
 	
 
 func get_direction() -> Vector2:
