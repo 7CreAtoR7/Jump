@@ -6,7 +6,7 @@ func _ready():
 	_velocity.x = -speed.x
 	
 
-
+# test
 func _physics_process(delta):
 	_velocity.y += gravity * delta
 	if is_on_wall():
