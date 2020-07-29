@@ -1,5 +1,7 @@
 extends Actor
 
+export var stomp_impulse := 1500.0
+
 func _physics_process(delta):
 	var is_jump_interrupted: = Input.is_action_just_released("jump") and _velocity.y < 0.0
 	var direction: = get_direction()
@@ -7,6 +9,14 @@ func _physics_process(delta):
 	_velocity = move_and_slide(_velocity, FLOOR_NORMAL)
 	if direction.x != 0:
 		$player.rotation += direction.x * 10.2 * delta
+
+	for i in get_slide_count():
+		var collision := get_slide_collision(i)
+		var collider := collision.collider
+		if collider is Enemy and is_on_floor() and collision.normal.dot(Vector2.UP) > 0.5:
+			_velocity.y = -stomp_impulse
+			(collider as Enemy).kill()
+		
 
 func get_direction() -> Vector2:
 	return Vector2(
