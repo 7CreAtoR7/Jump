@@ -9,7 +9,10 @@ func _physics_process(delta):
 	_velocity = move_and_slide(_velocity, FLOOR_NORMAL)
 	if direction.x != 0:
 		$player.rotation += direction.x * 10.2 * delta
-
+	
+	if Input.is_action_pressed("reboot"): # сделай в настройках проекта reboot на букву r
+		set_position(Vector2(-150,500))
+		
 	for i in get_slide_count():
 		var collision := get_slide_collision(i)
 		var collider := collision.collider
@@ -39,3 +42,10 @@ func calculate_move_velocity(
 	if is_jump_interrupted:
 		out.y = 0.0
 	return out
+
+
+func reboot():
+	
+	#_velocity.y = 0
+	#_velocity.x = 0
+	print("reboot")

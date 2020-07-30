@@ -5,7 +5,8 @@ func _ready():
 	set_physics_process(false)
 	_velocity.x = -speed.x
 	
-
+func start():
+	set_physics_process(true)
 
 func _physics_process(delta):
 	_velocity.y += gravity * delta
