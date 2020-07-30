@@ -20,6 +20,8 @@ func _physics_process(delta):
 			_velocity.y = -stomp_impulse
 			(collider as Enemy).kill()
 		
+		
+		# test
 
 func get_direction() -> Vector2:
 	return Vector2(
